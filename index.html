@@ -3,345 +3,905 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Srushti G. Joshi | Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Mimic Me Mirror - Project Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #6C63FF;
+            --primary-dark: #554fd8;
+            --secondary: #FF6584;
+            --dark: #2D2B55;
+            --light: #F8F9FA;
+            --gray: #6C757D;
+            --light-gray: #E9ECEF;
+            --border-radius: 8px;
+            --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7ff 0%, #eef1ff 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .project-header {
+            text-align: center;
+            padding: 60px 0 40px;
+            background-color: white;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            margin-bottom: 40px;
+        }
+
+        .project-title {
+            font-family: 'Raleway', sans-serif;
+            font-size: 3rem;
+            color: var(--dark);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .project-title::after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 4px;
+            background: var(--primary);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .project-subtitle {
+            font-size: 1.2rem;
+            color: var(--gray);
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+
+        .project-metadata {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .metadata-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--dark);
+            font-weight: 500;
+        }
+
+        .metadata-item i {
+            color: var(--primary);
+        }
+
+        .section {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 40px;
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-family: 'Raleway', sans-serif;
+            font-size: 2rem;
+            color: var(--dark);
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--light-gray);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background: var(--primary);
+            bottom: -2px;
+            left: 0;
+        }
+
+        .abstract-box {
+            background-color: var(--light);
+            padding: 25px;
+            border-radius: var(--border-radius);
+            border-left: 4px solid var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .abstract-box p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: var(--dark);
+        }
+
+        /* Team Members Section */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .team-card {
+            background-color: var(--light);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            text-align: center;
+            transition: var(--transition);
+            border: 1px solid var(--light-gray);
+        }
+
+        .team-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .team-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: white;
+            font-size: 2rem;
+        }
+
+        .team-name {
+            font-size: 1.3rem;
+            color: var(--dark);
+            margin-bottom: 5px;
+        }
+
+        .team-usn {
+            color: var(--primary);
+            font-weight: 500;
+            margin-bottom: 15px;
+            font-family: monospace;
+            background-color: rgba(108, 99, 255, 0.1);
+            padding: 5px 10px;
+            border-radius: 4px;
+            display: inline-block;
+        }
+
+        .team-role {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        .guides-section {
+            background-color: rgba(108, 99, 255, 0.05);
+            padding: 20px;
+            border-radius: var(--border-radius);
+            margin-top: 30px;
+        }
+
+        /* Circuit Diagram Section */
+        .circuit-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .circuit-diagram {
+            max-width: 100%;
+            border-radius: var(--border-radius);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--light-gray);
+            background-color: white;
+            padding: 20px;
+        }
+
+        .circuit-legend {
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+            margin-right: 15px;
+        }
+
+        .color-1 { background-color: #FF6B6B; }
+        .color-2 { background-color: #4ECDC4; }
+        .color-3 { background-color: #FFD166; }
+        .color-4 { background-color: #06D6A0; }
+        .color-5 { background-color: #118AB2; }
+
+        .legend-text {
+            flex: 1;
+        }
+
+        .legend-title {
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .legend-desc {
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        /* Problems and Solutions */
+        .problems-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .problem-card {
+            background-color: var(--light);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            border-left: 4px solid var(--secondary);
+            transition: var(--transition);
+        }
+
+        .problem-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .problem-card.solution {
+            border-left-color: var(--primary);
+        }
+
+        .problem-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .problem-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 107, 107, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: var(--secondary);
+        }
+
+        .solution .problem-icon {
+            background-color: rgba(108, 99, 255, 0.1);
+            color: var(--primary);
+        }
+
+        .problem-title {
+            font-size: 1.2rem;
+            color: var(--dark);
+        }
+
+        .problem-content {
+            color: var(--gray);
+        }
+
+        /* Project Description */
+        .workflow-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-top: 30px;
+            position: relative;
+        }
+
+        .workflow-steps::before {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background-color: var(--light-gray);
+            z-index: 1;
+        }
+
+        .step {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .step-content {
+            flex: 1;
+            background-color: var(--light);
+            padding: 20px;
+            border-radius: var(--border-radius);
+        }
+
+        .step-title {
+            font-size: 1.2rem;
+            color: var(--dark);
+            margin-bottom: 10px;
+        }
+
+        .step-desc {
+            color: var(--gray);
+        }
+
+        /* Performance Metrics */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .metric-card {
+            background-color: var(--light);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .metric-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .metric-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .metric-title {
+            font-size: 1.1rem;
+            color: var(--dark);
+            margin-bottom: 10px;
+        }
+
+        .metric-desc {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .metric-status {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-top: 15px;
+        }
+
+        .status-excellent {
+            background-color: rgba(6, 214, 160, 0.1);
+            color: #06D6A0;
+        }
+
+        .status-good {
+            background-color: rgba(255, 209, 102, 0.1);
+            color: #FFD166;
+        }
+
+        /* Footer */
+        .project-footer {
+            text-align: center;
+            padding: 40px 0;
+            color: var(--gray);
+            border-top: 1px solid var(--light-gray);
+            margin-top: 40px;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--primary);
+            font-weight: 600;
+            margin-top: 20px;
+            padding: 10px 20px;
+            border-radius: var(--border-radius);
+            background-color: rgba(108, 99, 255, 0.1);
+            transition: var(--transition);
+        }
+
+        .back-link:hover {
+            background-color: rgba(108, 99, 255, 0.2);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .project-title {
+                font-size: 2.2rem;
+            }
+            
+            .section {
+                padding: 25px;
+            }
+            
+            .section-title {
+                font-size: 1.7rem;
+            }
+            
+            .team-grid,
+            .problems-grid,
+            .metrics-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .project-metadata {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+            
+            .workflow-steps::before {
+                left: 25px;
+            }
+            
+            .step-number {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="container">
-            <a href="#" class="logo">Srushti<span>GJ</span></a>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <div class="menu-toggle">
-                <i class="fas fa-bars"></i>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h4 class="greeting">Hello, I'm</h4>
-                    <h1 class="name">Srushti G. Joshi</h1>
-                    <h2 class="title">Electronics & Communication Engineer</h2>
-                    <p class="description">Passionate about embedded systems, computer vision, and mechatronics. I create innovative solutions that bridge hardware and software.</p>
-                    <div class="hero-buttons">
-                        <a href="#projects" class="btn primary">View Projects</a>
-                        <a href="#contact" class="btn secondary">Contact Me</a>
-                    </div>
+    <div class="container">
+        <!-- Project Header -->
+        <div class="project-header">
+            <h1 class="project-title">Mimic Me Mirror</h1>
+            <p class="project-subtitle">An intelligent interactive system that recognizes human facial expressions using computer vision and displays corresponding expressions on an OLED screen while controlling servo-driven eyes.</p>
+            
+            <div class="project-metadata">
+                <div class="metadata-item">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>January 2026</span>
                 </div>
-                <div class="hero-image">
-                    <div class="image-wrapper">
-                        <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Srushti G. Joshi">
-                    </div>
+                <div class="metadata-item">
+                    <i class="fas fa-university"></i>
+                    <span>Engineering Program, Kochi, Kerala</span>
                 </div>
-            </div>
-            <div class="hero-footer">
-                <p><strong>USN:</strong> 01FE24BAR014</p>
-                <div class="social-icons">
-                    <a href="#"><i class="fab fa-linkedin"></i></a>
-                    <a href="#"><i class="fab fa-github"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
+                <div class="metadata-item">
+                    <i class="fas fa-microchip"></i>
+                    <span>Embedded Systems & Computer Vision</span>
                 </div>
             </div>
         </div>
-    </section>
 
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <h3>Engineering Student & Innovator</h3>
-                    <p>I am a dedicated Electronics and Communication Engineering student with a passion for creating interactive systems that combine hardware and software. My expertise lies in embedded systems, computer vision, and mechatronics.</p>
-                    <p>I enjoy working on projects that solve real-world problems through technology. My recent work includes the "Mimic Me Mirror" project, which integrates facial recognition with robotic actuation for interactive applications.</p>
-                    <div class="about-info">
-                        <div class="info-item">
-                            <span class="info-label">University:</span>
-                            <span class="info-value">Engineering Program, Kochi, Kerala</span>
-                        </div>
-                        <div class="info-item">
-                            <span class="info-label">Specialization:</span>
-                            <span class="info-value">Embedded Systems & Computer Vision</span>
-                        </div>
-                        <div class="info-item">
-                            <span class="info-label">Email:</span>
-                            <span class="info-value">srushti.joshi@example.com</span>
-                        </div>
-                        <div class="info-item">
-                            <span class="info-label">Location:</span>
-                            <span class="info-value">Kochi, Kerala, India</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Electronics Workspace">
-                </div>
+        <!-- Abstract Section -->
+        <div class="section">
+            <h2 class="section-title">Abstract</h2>
+            <div class="abstract-box">
+                <p>The Mimic Me Mirror is an innovative interactive system that integrates facial expression recognition with robotic actuation to create a responsive mirror interface. The system utilizes OpenCV Haar Cascade classifiers to detect facial expressions (Happy/Neutral) in real-time with 90-95% accuracy. Detected expressions are wirelessly transmitted via Bluetooth HC-05 module to an Arduino Nano microcontroller, which controls dual servo motors for eye movement and displays the recognized expression on a 128x64 OLED display.</p>
+                
+                <p style="margin-top: 15px;">The project successfully demonstrates the integration of computer vision, wireless communication, embedded systems, and mechanical control. Key achievements include real-time response latency of 150-200ms, bandwidth-optimized data transmission (sending data only on expression changes), and a cost-effective implementation (₹3,400). The system provides dual feedback through both visual (OLED display) and mechanical (servo eyes) outputs, creating an engaging interactive experience with potential applications in educational demonstrations, interactive installations, and accessibility interfaces.</p>
             </div>
         </div>
-    </section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="skills">
-        <div class="container">
-            <h2 class="section-title">Technical Skills</h2>
-            <div class="skills-container">
-                <div class="skill-category">
-                    <h3><i class="fas fa-microchip"></i> Embedded Systems</h3>
-                    <div class="skill-list">
-                        <div class="skill-item">
-                            <span class="skill-name">Arduino</span>
-                            <div class="skill-bar">
-                                <div class="skill-level" style="width: 90%"></div>
-                            </div>
-                            <span class="skill-percent">90%</span>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Microcontrollers</span>
-                            <div class="skill-bar">
-                                <div class="skill-level" style="width: 85%"></div>
-                            </div>
-                            <span class="skill-percent">85%</span>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Circuit Design</span>
-                            <div class="skill-bar">
-                                <div class="skill-level" style="width: 80%"></div>
-                            </div>
-                            <span class="skill-percent">80%</span>
+        <!-- Team Members Section -->
+        <div class="section">
+            <h2 class="section-title">Team Members</h2>
+            
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-icon">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h3 class="team-name">Srushti G Joshi</h3>
+                    <div class="team-usn">01FE24BAR014</div>
+                    <p class="team-role">Project Lead & Embedded Systems Developer</p>
+                </div>
+                
+                <div class="team-card">
+                    <div class="team-icon">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h3 class="team-name">M Shreya</h3>
+                    <div class="team-usn">01FE24BAR006</div>
+                    <p class="team-role">Computer Vision & Software Development</p>
+                </div>
+                
+                <div class="team-card">
+                    <div class="team-icon">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h3 class="team-name">Somavva C Gunjal</h3>
+                    <div class="team-usn">01FE24BAR012</div>
+                    <p class="team-role">Hardware Integration & Testing</p>
+                </div>
+            </div>
+            
+            <div class="guides-section">
+                <h3 style="color: var(--primary); margin-bottom: 15px;"><i class="fas fa-chalkboard-teacher"></i> Project Guides</h3>
+                <p style="font-size: 1.1rem; color: var(--dark);">Chanavva Soori & Mahesh Chitawadagi</p>
+                <p style="color: var(--gray); margin-top: 10px;">For their valuable guidance, constant support, and encouragement throughout this project.</p>
+            </div>
+        </div>
+
+        <!-- System Architecture & Circuit Diagram -->
+        <div class="section">
+            <h2 class="section-title">System Architecture & Circuit Diagram</h2>
+            
+            <div class="circuit-container">
+                <!-- Simplified ASCII-style circuit diagram representation -->
+                <div class="circuit-diagram">
+                    <pre style="font-family: monospace; font-size: 12px; line-height: 1.4; color: var(--dark);">
+┌─────────────────────────────────────────────────────────────────────┐
+│                        SYSTEM ARCHITECTURE                           │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                     │
+│  ┌─────────────┐     USB      ┌─────────────┐    Bluetooth   ┌─────┴─────┐
+│  │             │   (30 FPS)   │             │     (9600 bps) │           │
+│  │  USB Camera ├─────────────>│    Python   │<───────────────┤  Arduino  │
+│  │   (640x480) │              │  (OpenCV)   │                │   Nano    │
+│  │             │              │             │                │ (ATmega328)│
+│  └─────────────┘              └─────────────┘                └─────┬─────┘
+│                                                                    │
+│                                                                    │
+│  ┌─────────────────────────────────────────────────────────────────┤
+│  │                                                                 │
+│  │  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐  ┌─────────┴─────────┐
+│  │  │             │  │             │  │             │  │                   │
+│  │  │   Servo     │  │   Servo     │  │    OLED     │  │   Power Supply    │
+│  │  │  (Left Eye) │  │  (Right Eye)│  │  Display    │  │     (5V 2A)       │
+│  │  │    (Pin 5)  │  │    (Pin 6)  │  │  (I2C 0x3C) │  │                   │
+│  │  │             │  │             │  │             │  │                   │
+│  │  └─────────────┘  └─────────────┘  └─────────────┘  └───────────────────┘
+│  │                                                                 │
+│  └─────────────────────────────────────────────────────────────────┘
+│                                                                     │
+│  WORKFLOW: Camera → Python (Face/Smile Detection) → Bluetooth →     │
+│            Arduino → Servo Control + OLED Display                   │
+│                                                                     │
+└─────────────────────────────────────────────────────────────────────┘
+                    </pre>
+                </div>
+                
+                <div class="circuit-legend">
+                    <div class="legend-item">
+                        <div class="legend-color color-1"></div>
+                        <div class="legend-text">
+                            <div class="legend-title">USB Camera</div>
+                            <div class="legend-desc">30 FPS, 640x480 resolution, captures video frames for facial analysis</div>
                         </div>
                     </div>
-                </div>
-                <div class="skill-category">
-                    <h3><i class="fas fa-code"></i> Programming</h3>
-                    <div class="skill-list">
-                        <div class="skill-item">
-                            <span class="skill-name">Python</span>
-                            <div class="skill-bar">
-                                <div class="skill-level" style="width: 85%"></div>
-                            </div>
-                            <span class="skill-percent">85%</span>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">C/C++</span>
-                            <div class="skill-bar">
-                                <div class="skill-level" style="width: 80%"></div>
-                            </div>
-                            <span class="skill-percent">80%</span>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">JavaScript</span>
-                            <div class="skill-bar">
-                                <div class="skill-level" style="width: 70%"></div>
-                            </div>
-                            <span class="skill-percent">70%</span>
+                    
+                    <div class="legend-item">
+                        <div class="legend-color color-2"></div>
+                        <div class="legend-text">
+                            <div class="legend-title">Python (OpenCV)</div>
+                            <div class="legend-desc">Processes video frames, detects faces and smiles using Haar Cascade classifiers</div>
                         </div>
                     </div>
-                </div>
-                <div class="skill-category">
-                    <h3><i class="fas fa-eye"></i> Computer Vision</h3>
-                    <div class="skill-list">
-                        <div class="skill-item">
-                            <span class="skill-name">OpenCV</span>
-                            <div class="skill-bar">
-                                <div class="skill-level" style="width: 85%"></div>
-                            </div>
-                            <span class="skill-percent">85%</span>
+                    
+                    <div class="legend-item">
+                        <div class="legend-color color-3"></div>
+                        <div class="legend-text">
+                            <div class="legend-title">Bluetooth HC-05</div>
+                            <div class="legend-desc">Wireless communication at 9600 bps, transmits expression data to Arduino</div>
                         </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Haar Cascades</span>
-                            <div class="skill-bar">
-                                <div class="skill-level" style="width: 80%"></div>
-                            </div>
-                            <span class="skill-percent">80%</span>
+                    </div>
+                    
+                    <div class="legend-item">
+                        <div class="legend-color color-4"></div>
+                        <div class="legend-text">
+                            <div class="legend-title">Arduino Nano</div>
+                            <div class="legend-desc">Microcontroller processes Bluetooth data, controls servos and OLED display</div>
                         </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Facial Recognition</span>
-                            <div class="skill-bar">
-                                <div class="skill-level" style="width: 75%"></div>
-                            </div>
-                            <span class="skill-percent">75%</span>
+                    </div>
+                    
+                    <div class="legend-item">
+                        <div class="legend-color color-5"></div>
+                        <div class="legend-text">
+                            <div class="legend-title">Output Components</div>
+                            <div class="legend-desc">Dual servos for eye movement (60°/120° for Happy, 90°/90° for Neutral) + 128x64 OLED display</div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="projects">
-        <div class="container">
-            <h2 class="section-title">Featured Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Mimic Me Mirror">
-                        <div class="project-overlay">
-                            <a href="#" class="project-link">View Details</a>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Mimic Me Mirror</h3>
-                        <p class="project-description">An intelligent interactive system that recognizes human facial expressions using computer vision and displays corresponding expressions on an OLED screen while controlling servo-driven eyes.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">OpenCV</span>
-                            <span class="tech-tag">Arduino</span>
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">Haar Cascades</span>
-                        </div>
-                        <div class="project-stats">
-                            <div class="stat">
-                                <i class="fas fa-bullseye"></i>
-                                <span>90-95% Accuracy</span>
-                            </div>
-                            <div class="stat">
-                                <i class="fas fa-bolt"></i>
-                                <span>&lt;200ms Latency</span>
-                            </div>
-                        </div>
+        <!-- Project Description -->
+        <div class="section">
+            <h2 class="section-title">Project Description & Workflow</h2>
+            
+            <div class="workflow-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h4 class="step-title">Video Capture</h4>
+                        <p class="step-desc">USB camera captures video frames at 30 FPS with 640x480 resolution. The system works best at 0.5-2m distance with controlled lighting (300-500 lux).</p>
                     </div>
                 </div>
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Smart Home Automation">
-                        <div class="project-overlay">
-                            <a href="#" class="project-link">View Details</a>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">IoT Home Automation</h3>
-                        <p class="project-description">A smart home system that controls lighting, temperature, and security using Arduino and IoT sensors with a mobile app interface for remote monitoring and control.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">IoT</span>
-                            <span class="tech-tag">Arduino</span>
-                            <span class="tech-tag">Mobile App</span>
-                            <span class="tech-tag">Sensors</span>
-                        </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h4 class="step-title">Facial Expression Detection</h4>
+                        <p class="step-desc">Python script using OpenCV processes frames, detects faces with Haar Cascade classifiers, and identifies smiles. Accuracy: 90-95% under optimal conditions.</p>
                     </div>
                 </div>
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Gesture Control System">
-                        <div class="project-overlay">
-                            <a href="#" class="project-link">View Details</a>
-                        </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h4 class="step-title">Data Encoding & Transmission</h4>
+                        <p class="step-desc">Detected expression encoded as 'H' (Happy) or 'N' (Neutral). Data sent via HC-05 Bluetooth only when expression changes, reducing bandwidth by 80%.</p>
                     </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Gesture Control System</h3>
-                        <p class="project-description">A hand gesture recognition system using computer vision to control devices wirelessly, implemented with OpenCV and machine learning algorithms for accurate gesture detection.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">OpenCV</span>
-                            <span class="tech-tag">Machine Learning</span>
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">Bluetooth</span>
-                        </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h4 class="step-title">Arduino Processing</h4>
+                        <p class="step-desc">Arduino Nano receives data on pins 2-3 via SoftwareSerial, processes the expression code, and prepares output commands for servos and OLED.</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <h4 class="step-title">Dual Output Activation</h4>
+                        <p class="step-desc">Servo motors move eyes (60°/120° for Happy, 90°/90° for Neutral) while OLED displays corresponding expression graphics with ~60 FPS refresh rate.</p>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <h3>Let's Connect!</h3>
-                    <p>I'm always open to discussing new opportunities, collaborative projects, or just chatting about technology and innovation.</p>
-                    <div class="contact-details">
-                        <div class="contact-item">
-                            <i class="fas fa-envelope"></i>
-                            <div>
-                                <h4>Email</h4>
-                                <p>srushti.joshi@example.com</p>
-                            </div>
+        <!-- Problems and Solutions -->
+        <div class="section">
+            <h2 class="section-title">Challenges & Solutions</h2>
+            
+            <div class="problems-grid">
+                <div class="problem-card">
+                    <div class="problem-header">
+                        <div class="problem-icon">
+                            <i class="fas fa-meh"></i>
                         </div>
-                        <div class="contact-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <div>
-                                <h4>Location</h4>
-                                <p>Kochi, Kerala, India</p>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-university"></i>
-                            <div>
-                                <h4>University</h4>
-                                <p>Engineering Program, Kochi</p>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-id-card"></i>
-                            <div>
-                                <h4>USN</h4>
-                                <p>01FE24BAR014</p>
-                            </div>
-                        </div>
+                        <h3 class="problem-title">Poor Smile Detection in Side Profile</h3>
                     </div>
-                    <div class="social-links">
-                        <a href="#" class="social-link">
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                        <a href="#" class="social-link">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="#" class="social-link">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="#" class="social-link">
-                            <i class="fab fa-instagram"></i>
-                        </a>
+                    <div class="problem-content">
+                        <p>Haar Cascade classifiers performed poorly when faces were not frontal, especially in detecting smiles from side angles.</p>
                     </div>
                 </div>
-                <div class="contact-form">
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <input type="text" placeholder="Your Name" required>
+                
+                <div class="problem-card solution">
+                    <div class="problem-header">
+                        <div class="problem-icon">
+                            <i class="fas fa-lightbulb"></i>
                         </div>
-                        <div class="form-group">
-                            <input type="email" placeholder="Your Email" required>
+                        <h3 class="problem-title">Enforce Frontal Face Constraint</h3>
+                    </div>
+                    <div class="problem-content">
+                        <p>Implemented facial angle detection and only process frames where face is within ±30° of frontal view. Improved lighting to 300+ lux for better detection.</p>
+                    </div>
+                </div>
+                
+                <div class="problem-card">
+                    <div class="problem-header">
+                        <div class="problem-icon">
+                            <i class="fas fa-tv"></i>
                         </div>
-                        <div class="form-group">
-                            <input type="text" placeholder="Subject" required>
+                        <h3 class="problem-title">OLED Display Flicker</h3>
+                    </div>
+                    <div class="problem-content">
+                        <p>OLED screen exhibited flickering and unstable graphics during operation, especially when servos were moving.</p>
+                    </div>
+                </div>
+                
+                <div class="problem-card solution">
+                    <div class="problem-header">
+                        <div class="problem-icon">
+                            <i class="fas fa-bolt"></i>
                         </div>
-                        <div class="form-group">
-                            <textarea rows="5" placeholder="Your Message" required></textarea>
+                        <h3 class="problem-title">Stable Power Supply & Correct I2C Wiring</h3>
+                    </div>
+                    <div class="problem-content">
+                        <p>Ensured stable 5V supply with proper filtering capacitors. Verified correct I2C wiring (SDA/SCL pins) and added pull-up resistors for stable communication.</p>
+                    </div>
+                </div>
+                
+                <div class="problem-card">
+                    <div class="problem-header">
+                        <div class="problem-icon">
+                            <i class="fas fa-cogs"></i>
                         </div>
-                        <button type="submit" class="btn primary">Send Message</button>
-                    </form>
+                        <h3 class="problem-title">Servo Jitter Under Load</h3>
+                    </div>
+                    <div class="problem-content">
+                        <p>Servo motors exhibited jittery movement and inconsistent positioning when both servos and OLED were active simultaneously.</p>
+                    </div>
+                </div>
+                
+                <div class="problem-card solution">
+                    <div class="problem-header">
+                        <div class="problem-icon">
+                            <i class="fas fa-plug"></i>
+                        </div>
+                        <h3 class="problem-title">External Power Supply with Proper Grounding</h3>
+                    </div>
+                    <div class="problem-content">
+                        <p>Used 5V 2A external power supply instead of USB power. Implemented proper common ground connections between all components to eliminate ground loops.</p>
+                    </div>
+                </div>
+                
+                <div class="problem-card">
+                    <div class="problem-header">
+                        <div class="problem-icon">
+                            <i class="fas fa-bluetooth"></i>
+                        </div>
+                        <h3 class="problem-title">Bluetooth Connection Drops</h3>
+                    </div>
+                    <div class="problem-content">
+                        <p>Intermittent Bluetooth disconnections and data packet loss, especially when operating near other wireless devices.</p>
+                    </div>
+                </div>
+                
+                <div class="problem-card solution">
+                    <div class="problem-header">
+                        <div class="problem-icon">
+                            <i class="fas fa-resistance"></i>
+                        </div>
+                        <h3 class="problem-title">Voltage Divider Configuration</h3>
+                    </div>
+                    <div class="problem-content">
+                        <p>Verified and corrected voltage divider circuit (2.2kΩ + 1kΩ) on RX line to ensure proper 3.3V logic levels for HC-05 module communication.</p>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2024 Srushti G. Joshi. All rights reserved.</p>
-            <p>USN: 01FE24BAR014 | Engineering Program, Kochi, Kerala</p>
-            <p class="footer-links">
-                <a href="#home">Home</a> | 
-                <a href="#about">About</a> | 
-                <a href="#projects">Projects</a> | 
-                <a href="#contact">Contact</a>
-            </p>
+        <!-- Performance Metrics -->
+        <div class="section">
+            <h2 class="section-title">Performance Metrics</h2>
+            
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-value">90-95%</div>
+                    <div class="metric-title">Expression Detection Accuracy</div>
+                    <div class="metric-desc">Smile detection accuracy using Haar Cascade classifiers with proper lighting</div>
+                    <div class="metric-status status-excellent">Excellent</div>
+                </div>
+                
+                <div class="metric-card">
+                    <div class="metric-value">150-200ms</div>
+                    <div class="metric-title">System Response Latency</div>
+                    <div class="metric-desc">End-to-end delay between expression detection and visual/mechanical feedback</div>
+                    <div class="metric-status status-excellent">Real-time</div>
+                </div>
+                
+                <div class="metric-card">
+                    <div class="metric-value">&lt;1%</div>
+                    <div class="metric-title">Packet Loss (within 3m)</div>
+                    <div class="metric-desc">Bluetooth data transmission reliability at close range</div>
+                    <div class="metric-status status-excellent">Reliable</div>
+                </div>
+                
+                <div class="metric-card">
+                    <div class="metric-value">80%</div>
+                    <div class="metric-title">Bandwidth Reduction</div>
+                    <div class="metric-desc">Optimization achieved by sending data only on expression changes</div>
+                    <div class="metric-status status-excellent">Efficient</div>
+                </div>
+                
+                <div class="metric-card">
+                    <div class="metric-value">~60 FPS</div>
+                    <div class="metric-title">OLED Refresh Rate</div>
+                    <div class="metric-desc">Display update frequency for smooth visual feedback</div>
+                    <div class="metric-status status-excellent">Smooth</div>
+                </div>
+                
+                <div class="metric-card">
+                    <div class="metric-value">100-150ms</div>
+                    <div class="metric-title">Servo Response Time</div>
+                    <div class="metric-desc">Time for servo motors to complete eye movement (60°/0.1s)</div>
+                    <div class="metric-status status-excellent">Fast</div>
+                </div>
+            </div>
         </div>
-    </footer>
 
-    <script src="script.js"></script>
+        <!-- Footer -->
+        <div class="project-footer">
+            <p><strong>Mimic Me Mirror Project</strong> | January 2026 | Engineering Program, Kochi, Kerala</p>
+            <p>Project Team: Srushti G Joshi (01FE24BAR014), M Shreya (01FE24BAR006), Somavva C Gunjal (01FE24BAR012)</p>
+            <a href="#" class="back-link">
+                <i class="fas fa-arrow-left"></i>
+                Back to Main Portfolio
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Simple animation for step numbers when they come into view
+        document.addEventListener('DOMContentLoaded', function() {
+            const steps = document.querySelectorAll('.step');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateX(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            steps.forEach(step => {
+                step.style.opacity = '0';
+                step.style.transform = 'translateX(-20px)';
+                step.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(step);
+            });
+            
+            // Animate metric cards on scroll
+            const metrics = document.querySelectorAll('.metric-card');
+            
+            const metricObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            metrics.forEach(metric => {
+                metric.style.opacity = '0';
+                metric.style.transform = 'translateY(20px)';
+                metric.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                metricObserver.observe(metric);
+            });
+        });
+    </script>
 </body>
 </html>
